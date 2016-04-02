@@ -131,12 +131,15 @@ c <- c(1:8)
 # Es 1.a -> Calculate Max and Min of each vector
 max(a)
 min(a)
+range(a) # Returns min and max
 
 max(b)
 min(b)
+range(b)
 
 max(c)
 min(c)
+range(c)
 
 ## Es 1.b -> Calculate the sum of each vector
 sum(a)
@@ -149,24 +152,30 @@ a + b
 ## Es 1.d -> Calculate a - b - c
 a - b - c
 
-## Es 1.e -> Calculate a * b
-a * b
+## Es 1.e -> Calculate product of b
+prod(b)
 
 ## Es 1.f -> Concatenate each vector and extract a random sample 
 concatv <- c(a,b,c)
-sample(concatv,size=length(concatv)*30/100,replace=FALSE)
+sample(concatv,size=floor(length(concatv)*30/100),replace=FALSE)
 
 # Es 2 -> 20 workers out of illnes in the last 6 weeks
 ## Es 2.a -> Create a vector containing illness days and the workers codes
 
 workers <- c(2,2,0,0,5,8,3,4,1,0,0,7,1,7,1,5,4,0,4,0)
-names(workers) <- c("w0","w1","w2","w3","w4","w5","w6","w7","w8","w9","w10","w11","w12","w13","w14","w15","w16","w17","w18","w19")
+#names(workers) <- c("w0","w1","w2","w3","w4","w5","w6","w7","w8","w9","w10","w11","w12","w13","w14","w15","w16","w17","w18","w19")
+# A better way to do this is using paste
+codes <- paste("w",0:19, sep="")
+names(workers) <- codes
 
 ## Es 2.b -> Get how many illness days has got w6
-workers[c("w6")]
+workers["w6"]
 
 ## Es 2.c -> Get how many workers had got 0 illness days and print their codes
 zeroIllnessesCodes <- names(workers)[workers[c(1:20)] == 0]
 
-## Es 3.d -> Extract the illness days of all workers except w1 and w2
-workers[c(1,4:20)]
+## or, using the codes vector
+codes[workers == 0]
+
+## Es 3.d -> Extract the illness days of all workers except w2 and w11
+workers[setdiff(codes, c("w2","w11"))
