@@ -1,3 +1,5 @@
+## LESSON 1 ##
+
 # Vectors:
 #	
 #	create a vector: c(arg1, arg2, arg3) with arg1,arg2,arg3 of the same type.
@@ -114,7 +116,6 @@ Age.Year <- champ[c("Age","FromYear")]
 ###################
 #### Exercises ####
 ###################
-
 
 # Es 1
 ## Insert the following values in 3 distinct vectors
