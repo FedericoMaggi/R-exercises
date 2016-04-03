@@ -79,10 +79,48 @@ lastnames <- paste("surname", 1:16, sep="")
 donors <- list(Names=names, Lastnames=lastnames, Groups=bloodgroups)
 
 ## Es 1.d -> retrieve name and surname of people with B blood group
-
 Bgroup <- donors$Groups == "B"
 Bnames <- donors$Names[Bgroup]
 Blastnames <- donors$Lastnames[Bgroup]
+
+# Es 2 -> Build a string containing:
+#
+#	A square matrix 4x4
+#	A character vector of 32 elements
+#	The string "mouse"
+#	Another list containing
+#		A vector with 10 numeric elements
+#		The boolean FALSE
+theExerciseList <- list(matrix(c(0:15),nrow=4),
+						rep("a",times=32),
+						"mouse",
+						list(	c(0:9),
+								FALSE))
+
+# Es 3 -> Get the second column of the matrix with name m
+getFromList <- list(m=matrix(rnorm(64), nrow=8),
+					s=c(rep("T",3),rep("G",5)))
+
+theCol <- getFromList$m[,2]
+
+# Es 4 -> Access in three different ways to the second component of the previous list.
+
+access1 <- getFromList$s
+access2 <- getFromList[["s"]]
+access3 <- getFromList[[2]]
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
