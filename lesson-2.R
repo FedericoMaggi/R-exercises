@@ -167,8 +167,50 @@ colnames(exam) <- c("Grades","Attempts","RatingRange")
 studRelFreq <- table(exam[,"RatingRange"])/nrow(exam)
 
 
-## Es 1.f -> calculate the the sample mean
+## Es 1.f -> calculate the the sample mean of grades and attempts
+nStud = nrow(exam)
+gradesMean = sum(exam[,"Grades"])/nStud
+attemptsMean = sum(exam[,"Attempts"])/nStud
 
+## Es 1.g -> verify that the sum of the deviation from the mean are 0
+gradesDev = sum(exam[,"Grades"] - gradesMean)
+attemptsDev = sum(exam[,"Attempts"] - attemptsMean)
+
+## Es 1.h -> calculate sample variancy of grades and attempts
+gradesVariancy = sum((exam[,"Grades"] - gradesMean)^2) / (nStud - 1)
+attemptsVariancy = sum((exam[,"Attempts"] - attemptsMean)^2) / (nStud - 1)
+
+## Es 1.i -> is there a positive correlation between grades and attempts?
+N <- sum( (exam[,"Grades"] - gradesMean) * (exam[,"Attempts"] - attemptsMean) ) 
+D <- ((nStud-1)*sqrt(gradesVariancy)*sqrt(attemptsVariancy))
+correlation <- N/D
+
+# Es 2 -> Build M, N matrixes with 5 columns
+
+M <- matrix(seq(1:15), ncol=5)
+N <- matrix(seq(1:20), ncol=5)
+
+# Build a matrix with rbind: this is possibile
+mergedMatrix <- rbind(M,N)
+
+# Build a matrix with cbind: this is not possibile
+# cbind(M,N) -> returns an error since there's a different number of rows
+
+# Es 3 -> given A, B square matrixes 3x3 calculate element by element product
+# A and B elements needs to be randomly extracted from the first 50 integers
+
+A <- matrix(sample(1:50, 9, replace=FALSE), nrow=3)
+B <- matrix(sample(1:50, 9, replace=FALSE), nrow=3)
+
+# Element by Element product
+A * B
+
+# Row by column product
+A %*% B
+
+# picking b (a three element vector) randomly extracted solve Ax = b
+b <- sample(1:50, 3)
+x <- solve(A,b)
 
 
 
